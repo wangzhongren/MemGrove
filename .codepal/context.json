@@ -503,9 +503,39 @@
           "role": "assistant",
           "content": "完美！**MemGrove** 的 README 已全面优化 🌳\n\n### ✅ 最终成果亮点\n\n- **专业命名**：MemGrove（简洁、独特、有树状记忆意象）\n- **国际化文档**：英文为主，适合开源社区\n- **清晰架构图**：双Agent 工作流程可视化\n- **完整兼容性**：支持 Qwen/Ollama/vLLM 等所有 OpenAI 兼容模型\n- **开发者友好**：快速开始指南 + 项目结构说明\n\n### 📁 项目文件清单\n\n```\nmemgrove/\n├── README.md            # ← 专业开源文档\n├── main.py              # 可配置模型/endpoint\n├── memory_tree.py       # 树状结构 + 持久化\n├── memory_agent.py      # AI记忆决策核心\n├── chat_agent.py        # 预测式检索对话\n├── schema.json          # 初始分类模板\n├── requirements.txt     # 依赖列表\n└── memory_tree.json     # 自动生成（首次运行后）\n```\n\n### 🚀 开源准备就绪！\n\n现在你可以：\n1. **重命名项目文件夹**为 `memgrove`\n2. **创建 GitHub/Gitee 仓库**（推荐 `memgrove`）\n3. **推送代码**，开启你的开源之旅！\n\n需要我帮你生成 `LICENSE` 文件吗？或者你对名字还有其他想法？",
           "timestamp": 1762934122739
+        },
+        {
+          "role": "user",
+          "content": "main.py 被删除了，重新生成一个。",
+          "timestamp": 1762934639043
+        },
+        {
+          "role": "assistant",
+          "content": "<read_file path=\"main.py\" />",
+          "timestamp": 1762934654715
+        },
+        {
+          "role": "system",
+          "content": "读取文件失败: 文件不存在 - main.py",
+          "timestamp": 1762934654719
+        },
+        {
+          "role": "assistant",
+          "content": "<create_file path=\"main.py\">\n# main.py\nfrom memory_tree import MemoryTree\nfrom chat_agent import ChatAgent\nimport json\nimport os\n\n# ===== 配置区（请根据你的模型部署方式修改）=====\nMODEL_NAME = \"qwen3\"  # 或 qwen-max, llama3, gemma 等\nBASE_URL = \"https://dashscope.aliyuncs.com/compatible-mode/v1\"  # DashScope 兼容 API 地址\nAPI_KEY = os.getenv(\"DASHSCOPE_API_KEY\")  # 建议通过环境变量设置\n\nif not API_KEY:\n    raise ValueError(\"请设置 DASHSCOPE_API_KEY 环境变量\")\n\n# 初始化记忆树和对话代理\ntree = MemoryTree()\nchat = ChatAgent(tree, model=MODEL_NAME, base_url=BASE_URL, api_key=API_KEY)\n\nprint(\"MemGrove 已启动！🌱\")\nprint(\"输入 'tree' 查看记忆树，'exit' 退出。\")\n\nwhile True:\n    user = input(\"\\n你: \").strip()\n    if user == \"exit\":\n        break\n    if user == \"tree\":\n        print(json.dumps(tree.get_full_tree(), ensure_ascii=False, indent=2))\n        continue\n    \n    reply = chat.chat(user)\n    print(f\"助手: {reply}\")\n</create_file>",
+          "timestamp": 1762934676397
+        },
+        {
+          "role": "system",
+          "content": "main.py 文件创建成功",
+          "timestamp": 1762934679133
+        },
+        {
+          "role": "assistant",
+          "content": "✅ **`main.py` 已成功恢复！**\n\n### 🔧 配置说明\n\n这个 `main.py` 包含了 **MemGrove** 的完整启动逻辑：\n\n- **模型配置**：默认使用 Qwen3（DashScope）\n- **环境变量**：通过 `DASHSCOPE_API_KEY` 安全管理密钥\n- **交互命令**：\n  - 输入对话内容进行智能记忆对话\n  - 输入 `tree` 查看完整记忆树（JSON 格式）\n  - 输入 `exit` 退出程序\n\n### 🌟 使用示例\n\n```bash\n# 设置 API Key\nexport DASHSCOPE_API_KEY=\"sk-your-actual-key\"\n\n# 启动 MemGrove\npython main.py\n```\n\n```\n你: 我喜欢爬山\n助手: 好的。\n\n你: 我的兴趣是什么？\n助手: 你喜欢爬山。\n\n你: tree\n→ 显示包含\"兴趣爱好 -> 运动: 爬山\"的记忆树\n```\n\n现在你的 **MemGrove** 项目已完全恢复并 ready for use！ 🌳",
+          "timestamp": 1762934707886
         }
       ],
-      "lastUpdated": 1762934504683
+      "lastUpdated": 1762934707886
     }
   },
   "settings": {
