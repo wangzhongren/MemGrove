@@ -138,9 +138,7 @@ Works with any **OpenAI-compatible API**:
 
 > Just update `MODEL_NAME`, `BASE_URL`, and `API_KEY` in `main.py`.
 
-## 📜 License
 
-MIT License — see [LICENSE](LICENSE)
 
 ## 🙌 Contribute
 
